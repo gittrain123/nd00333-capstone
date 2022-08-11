@@ -9,6 +9,7 @@ from sklearn.preprocessing import OneHotEncoder
 import pandas as pd
 from azureml.core.run import Run
 from azureml.data.dataset_factory import TabularDatasetFactory
+from azureml.core import Workspace, Dataset
 
 def main():
     # Add arguments to script
@@ -27,11 +28,10 @@ def main():
     # TODO: Create TabularDataset using TabularDatasetFactory
     # Data is located at:
     # "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv"
-
-    key = "forestfire"
-    dataset = ws.datasets[key] 
-
-    df = dataset.to_pandas_dataframe()
+    url =  "https://raw.githubusercontent.com/gittrain123/nd00333-capstone/master/starter_file/forest_fire_cleaned.csv"
+ 
+    data = Dataset.Tabular.from_delimited_files(path=url)
+    df = data.to_pandas_dataframe()
     y = df["Classes_mapped"]
     x = df.drop(["Classes_mapped"], axis =1)
 
@@ -40,8 +40,8 @@ def main():
     model = LogisticRegression(C=args.C, max_iter=args.max_iter).fit(x_train, y_train)
 
     accuracy = model.score(x_test, y_test)
-    #joblib.dump(value=model,filename='outputs/model.pkl')
-    #run.upload_file(name='model.pkl', path_or_stream='outputs/model.pkl')
+    joblib.dump(value=model,filename='outputs/model.pkl')
+    run.upload_file(name='model.pkl', path_or_stream='outputs/model.pkl')
     run.log("Accuracy", np.float(accuracy))
 
 if __name__ == '__main__':
