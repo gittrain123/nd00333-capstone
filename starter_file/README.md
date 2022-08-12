@@ -14,7 +14,6 @@ The Algerian Forest Fires Dataset is obtained from UCI Machine learning Reposito
 It contains 244 instances for 2 regions of Algeria in the period of Jun 2012 to Sep 2012. 
 ### Task
 *TODO*: Explain the task you are going to be solving with this dataset and the features you will be using for it.\
-
 Using 11 variables namely date, temperature, relative humidity (RH), wind speed (Ws), Rain, Fine Fuel Moisture Code (FFMC), Duff Moisture Code (DMC), Drought Code (DC), Initial Spread Index (ISI), Buildup Index (BUI) and Fire Weather Index (FWI), a classification model will be built to predict if there will be a forest fire. 
 
 ### Access
@@ -22,13 +21,13 @@ Using 11 variables namely date, temperature, relative humidity (RH), wind speed 
 The dataset is registered in the workspace as 'forestfire' and the dataset can be obtained via the registered name as seen from the screenshot.
 ![Screenshot](./images/dataset.PNG) 
 ## Automated ML
-*TODO*: Give an overview of the `automl` settings and configuration you used for this experiment
-The following shows the automl settings.\
-In summary, the experiment timeout was set to 30mins and the primary metric is accuracy.
+*TODO*: Give an overview of the `automl` settings and configuration you used for this experiment\
+The following shows the automl settings. In summary, the experiment timeout was set to 30mins and the primary metric is accuracy.
 ![Screenshot](./images/automl_settings.PNG) 
 
 ### Results
-*TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?\ 
+*TODO*: What are the results you got with your automated ML model? What were the parameters of the model? How could you have improved it?
+
 The best model is a voting ensemble model with an accuracy of 0.98783. The other models tested can be found in the screenshot below. One way to improve the model is to include a 5-fold cross validation setting in the automl settings.
 ![Screenshot](./images/automl_models.PNG) 
 
